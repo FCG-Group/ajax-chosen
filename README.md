@@ -4,6 +4,12 @@ This project is an addition to the excellent [Chosen jQuery plugin](https://gith
 
 This script bootstraps the existing Chosen plugin without making any modifications to the original code. Eventually, I would love to see this functionality built-in to the library, but until then, this seems to work pretty well.
 
+## Note about this fork
+
+This fork introduces compatibility for Chosen 1.x and a new plugin structure closer to the default jQuery plugin structure.
+
+Merge requests are still open on the main Ajax Chosen repository but haven't been merged.
+
 ## How to Use
 
 This plugin exposes a new jQuery function named `ajaxChosen` that we call on a `select` element. The first argument consists of the options passed to the jQuery $.ajax function. The `data` parameter is optional, and the `success` callback is also optional.
