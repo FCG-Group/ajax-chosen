@@ -7,7 +7,7 @@
     "Michaël Perrin"
   ],
   "description": "A complement to the jQuery library Chosen that adds ajax autocomplete",
-  "main": "./lib/ajax-chosen/ajax-chosen.min.js",
+  "main": "./lib/ajax-chosen.min.js",
   "license": "MIT",
   "dependencies": {
     "jquery": ">= 1.9.0",
