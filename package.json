@@ -1,7 +1,7 @@
 {
   "name": "ajax-chosen",
   "description": "A complement to the jQuery library Chosen that adds ajax autocomplete",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Ryan LeFevre",
     "email": "meltingice8917@gmail.com",
