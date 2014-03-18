@@ -52,19 +52,6 @@ becomes:
             <option value="20">Tokyo</option>
         </optgroup>
 
-Note: 
-
-Due to a bug in Chosen, it is necessary to change `choosen.css`.
-
-Add 
-
-	display: list-item;
-
-to 
-
-	.chzn-container .chzn-results .group-result {
-
-class
 
 ### Options
 
