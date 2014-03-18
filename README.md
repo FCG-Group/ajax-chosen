@@ -6,9 +6,25 @@ This script bootstraps the existing Chosen plugin without making any modificatio
 
 ## Note about this fork
 
-This fork introduces compatibility for Chosen 1.x and a new plugin structure closer to the default jQuery plugin structure.
+This fork has been made as PR were no more merged into the main repository.
 
-Merge requests are still open on the main Ajax Chosen repository but haven't been merged.
+It introduces the following new features:
+
+* Compatibility for Chosen 1.x
+* A new plugin structure closer to the default jQuery plugin structure
+* Bower support
+* Updated documentation
+
+## Installation
+
+### Manually
+
+Download either the [minified version](https://github.com/michaelperrin/ajax-chosen/raw/master/lib/ajax-chosen.min.js) or [the full version](https://github.com/michaelperrin/ajax-chosen/raw/master/lib/ajax-chosen.js).
+
+### Using Bower
+
+    bower install ajax-chosen
+
 
 ## How to Use
 
