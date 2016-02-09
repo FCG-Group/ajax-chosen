@@ -43,7 +43,6 @@ do ($ = jQuery) ->
       # into the input form that chosen has created
 
       # Retrieve the current value of the input form
-      @untrimmed_val = @search_field.val()
       val = $.trim @search_field.val()
 
       # Depending on how much text the user has typed, let them know
@@ -150,7 +149,13 @@ do ($ = jQuery) ->
       if nbItems
         # Tell chosen that the contents of the <select> input have been updated
         # This makes chosen update its internal list of the input data.
+        val_before_trigger = @search_field.val()
         @element.trigger("chosen:updated")
+        # For some reason, the contents of the input field get removed once you
+        # call trigger above. Often, this can be very annoying (and can make some
+        # searches impossible), so we add the value the user was typing back into
+        # the input field.
+        @search_field.val(val_before_trigger)
       else
         # If there are no results, display the no_results text
         @element.data().chosen.no_results_clear()
@@ -158,12 +163,6 @@ do ($ = jQuery) ->
 
       # Finally, call the user supplied callback (if it exists)
       @success(data) if @success?
-
-      # For some reason, the contents of the input field get removed once you
-      # call trigger above. Often, this can be very annoying (and can make some
-      # searches impossible), so we add the value the user was typing back into
-      # the input field.
-      @search_field.val(@untrimmed_val)
 
       # Because non-ajax Chosen isn't constantly re-building results, when it
       # DOES rebuild results (during chosen:updated above, it clears the input
