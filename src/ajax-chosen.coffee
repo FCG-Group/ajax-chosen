@@ -29,9 +29,17 @@ do ($ = jQuery) ->
       @search_field = @element.next('.chosen-container')
         .find(".search-field > input, .chosen-search > input")
 
+      @is_typing = false
       @register_observers()
 
     register_observers: ->
+      @search_field.on "compositionstart", (evt) =>
+        @is_typing = true
+        return
+      @search_field.on "compositionend", (evt) =>
+        @is_typing = false
+        @update_list(evt)
+        return
       @search_field.keyup (evt) => @update_list(evt); return
       @search_field.focus (evt) => @search_field_focused(evt); return
 
@@ -39,6 +47,7 @@ do ($ = jQuery) ->
       return @update_list(evt) if @options.minTermLength == 0 and @search_field.val().length == 0
 
     update_list: (evt) ->
+      return if @is_typing
       # This code will be executed every time the user types a letter
       # into the input form that chosen has created
 
@@ -87,6 +96,7 @@ do ($ = jQuery) ->
     # Create our own callback that will be executed when the ajax call is
     # finished.
     show_results: (data) ->
+      return if @is_typing
       # Exit if the data we're given is invalid
       return unless data?
 
