@@ -86,11 +86,11 @@ $("#example-input").ajaxChosen({
 	dataType: 'json'
 }, function (data) {
 	var results = [];
-	
+
 	$.each(data, function (i, val) {
 		results.push({ value: val.value, text: val.text });
 	});
-	
+
 	return results;
 });
 ```
@@ -131,4 +131,4 @@ In order to install development dependencies, you can run in the ajax-chosen dir
 npm install -d
 ```
 
-ajax-chosen is written in Coffeescript, so there is a Cakefile provided that will perform all necessary tasks for you. Simply run `cake` to see all available commands.
+ajax-chosen is written in Coffeescript, so there is a Cakefile provided that will perform all necessary tasks for you. Simply run `npm run build` to see all available commands.

@@ -13,6 +13,7 @@
     "servedir": "*"
   },
   "scripts": {
-    "start": "servedir"
+    "start": "servedir",
+    "build": "cake build"
   }
 }
