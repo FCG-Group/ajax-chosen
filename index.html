@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
 	<title>Ajax-Chosen: Bootstrapping a Popular jQuery Plugin to add Ajax Autocomplete</title>
-	
+
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script type="text/javascript" src="/dist/chosen/chosen/chosen.jquery.min.js"></script>
-	<script type="text/javascript" src="/lib/ajax-chosen.js"></script>
-	
-	<link type="text/css" rel="stylesheet" href="/dist/chosen/chosen/chosen.css" />
-	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
+	<script type="text/javascript" src="lib/ajax-chosen.js"></script>
+
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.min.css" />
+
 	<style type="text/css">
 	#example1, #example2, #example3 { width: 300px; display: block; }
 	</style>
-	
+
 	<script type="text/javascript">
 	$(document).ready(function () {
 		$("#example1,#example2,#example3").ajaxChosen({
@@ -21,11 +21,11 @@
 			dataType: 'json'
 		}, function (data) {
 			var terms = {};
-			
+
 			$.each(data.states, function (i, val) {
 				terms[i] = val;
 			});
-			
+
 			return terms;
 		});
 	});
@@ -33,7 +33,7 @@
 </head>
 <body>
 	<h1>Ajax-Chosen: Bootstrapping a jQuery Plugin</h1>
-	
+
 	<div>
 		<h2>Multi Select</h2>
 		<select id="example1" title="Search for a state" multiple></select><br /><br />
