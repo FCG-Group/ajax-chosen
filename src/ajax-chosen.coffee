@@ -103,7 +103,11 @@ do ($ = jQuery) ->
       # Send the ajax results to the user callback so we can get an object of
       # value => text pairs to inject as <option> elements.
       items = if @callback_function? then @callback_function(data, @search_field) else data
-      return unless items.length
+      unless items.length
+        # If there are no results, display the no_results text
+        @element.data().chosen.no_results_clear()
+        @element.data().chosen.no_results @search_field.val()
+        return
 
       # Go through all of the <option> elements in the <select> and remove
       # ones that have not been selected by the user.  For those selected
@@ -157,20 +161,15 @@ do ($ = jQuery) ->
               .html(text)
               .appendTo(_this.element)
 
-      if nbItems
-        # Tell chosen that the contents of the <select> input have been updated
-        # This makes chosen update its internal list of the input data.
-        val_before_trigger = @search_field.val()
-        @element.trigger("chosen:updated")
-        # For some reason, the contents of the input field get removed once you
-        # call trigger above. Often, this can be very annoying (and can make some
-        # searches impossible), so we add the value the user was typing back into
-        # the input field.
-        @search_field.val(val_before_trigger)
-      else
-        # If there are no results, display the no_results text
-        @element.data().chosen.no_results_clear()
-        @element.data().chosen.no_results @search_field.val()
+      # Tell chosen that the contents of the <select> input have been updated
+      # This makes chosen update its internal list of the input data.
+      val_before_trigger = @search_field.val()
+      @element.trigger("chosen:updated")
+      # For some reason, the contents of the input field get removed once you
+      # call trigger above. Often, this can be very annoying (and can make some
+      # searches impossible), so we add the value the user was typing back into
+      # the input field.
+      @search_field.val(val_before_trigger)
 
       # Finally, call the user supplied callback (if it exists)
       @success(data) if @success?
