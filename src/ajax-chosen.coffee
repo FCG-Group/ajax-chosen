@@ -100,6 +100,11 @@ do ($ = jQuery) ->
       # Exit if the data we're given is invalid
       return unless data?
 
+      # Send the ajax results to the user callback so we can get an object of
+      # value => text pairs to inject as <option> elements.
+      items = if @callback_function? then @callback_function(data, @search_field) else data
+      return unless items.length
+
       # Go through all of the <option> elements in the <select> and remove
       # ones that have not been selected by the user.  For those selected
       # by the user, add them to a list to filter from the results later.
@@ -111,10 +116,6 @@ do ($ = jQuery) ->
           selected_values.push $(@).val() + "-" + $(@).text()
       @element.find('optgroup:empty').each ->
         $(@).remove()
-
-      # Send the ajax results to the user callback so we can get an object of
-      # value => text pairs to inject as <option> elements.
-      items = if @callback_function? then @callback_function(data, @search_field) else data
 
       nbItems = 0
 
